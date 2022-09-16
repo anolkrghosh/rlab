@@ -1,0 +1,88 @@
+<div class="card mb-2" id="input">
+    <div class="card-body">
+        <form id="search">
+            <div class="form-row">
+                <div class="col-11">
+                    <input type="text" class="form-control shadow-none border-0" name="title" placeholder="Search">
+                </div>
+                <div class="col-1">
+                    <button type="submit" class="btn btn-warning float-right">Search</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="card mb-2" id="ctl" style="background-color: rgba(255, 255, 255, 0);">
+    <div class="card-body">
+        <div class="row align-items-center">
+            <div class="col-6 offset-6 text-right">
+                <button class="btn btn-success addform">Add New</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="listpreviews">
+    <% books.forEach((item)=> { %>
+        <div class="card mb-2">
+            <div class="row align-items-center">
+                <div class="col-10">
+                    <div class="card mb-2" id="<%=item.isbn%>">
+                        <div class="card-body">
+                            <div class="row p-1">
+                                <h6 id="title">Title : <%=item.title%></h6>
+                                
+                            </div>
+                            <div class="row p-1">
+                                <span id="auth">Author : <%=item.authors%></span>
+                            </div>
+                            <div class="row p-1">
+                                <span id="auth">ISBN : <%=item.isbn%></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2 text-right">
+                    <button data-isbn="<%=item.isbn%>" data-type="<%=item.type%>" class="btn remove_item btn-danger">Remove</button>
+                </div>
+            </div>
+        </div>
+
+        <% }) %>
+</div>
+<div id="formpreviews">
+    <div class="card">
+        <div class="card-body">
+            <form id="add">
+                <div class="form-row mb-2">
+                    <div class="col-6 mb-2">
+                        <input type="text" class="shadow-none form-control" name="author" placeholder="Author">
+                    </div>
+                    <div class="col-6 mb-2">
+                        <input type="text" class="shadow-none form-control" name="title" placeholder="Title">
+                    </div>
+                    <div class="col-6">
+                        <select class="custom-select shadow-none" aria-label="Type" name="type">
+                            <option selected value="books">Book</option>
+                            <option value="mags">Magazine</option>
+                          </select> 
+                    </div>
+                    <div class="col-6">
+                        <input type="text" class="shadow-none form-control" name="isbn" placeholder="ISBN">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-12">
+                        <textarea class="shadow-none form-control" name="description"
+                            aria-label="Description"></textarea>
+                    </div>
+                </div>
+                <div class="row mt-1 align-items-center">
+                    <div class="col-6 offset-6 text-right">
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
