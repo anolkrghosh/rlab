@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../controller/db');
-db.preload()
+// db.preload()
 const get_data = () => {
   let books = db.data.get("books").value()
   let mags = db.data.get("mags").value() 
@@ -16,8 +16,11 @@ const get_data = () => {
   return [...books,...mags]
 };
 router.get('/', (req, res) => {
-
   res.render('index', { "books": get_data() });
+});
+router.get('/reset', (req, res) => {
+  db.preload();
+  res.redirect("/")
 });
 router.get('/export', (req, res) => {
   db.export_json()
