@@ -12,7 +12,7 @@ app.use(express.static(path.join(__dirname,'/views/assets/dist')));
 app.set('view engine', 'ejs');
 app.use('/', router);
 // set port, listen for requests
-const PORT = 8091;
+const PORT = process.env.PORT || 8091;
 http.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`);
 });
